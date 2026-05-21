@@ -1,0 +1,12 @@
+# Group-03
+1. Pet Adoption & Care System:
+Currently, stray animals do not get proper visibility for adoption and often lack proper care, shelter, and medical attention. Many people are willing to adopt pets, but there is no centralized system to connect adopters with available animals, leading to low adoption rates and poor animal welfare.
+This project aims to develop a Pet Adoption and Care System to manage and promote pet adoption effectively. The system will allow listing of pets available for adoption along with their details such as age, breed, and health condition. Users can request to adopt pets, and the admin can manage these requests. The system will also track vaccination records, medical history, and overall care details of each animal to ensure proper monitoring and responsible adoption.
+
+2. Student Event and Club Management System:
+Currently, college clubs face difficulties in managing events, maintaining member records and tracking participation. Most of these activities are handled manually which leads to poor communication, data mismanagement and inefficiency in organizing events.
+This project aims to develop a Student Event and Club Management System to streamline club activities and improve coordination. The system will allow clubs to create and manage event announcements, handle member registration, and maintain a centralized database of participants. It will also provide features to track attendance and participation records, making it easier for administrators to manage events efficiently and for students to stay informed and engaged.
+
+3. Smart Donation & Volunteer Management System:
+Currently, many organizations such as old age homes and orphanages face difficulties in managing donations and coordinating volunteers. Most processes are handled manually which leads to lack of transparency, inefficient resource distribution, and poor communication between donors, volunteers and organizations.
+This project aims to develop a Smart Donation and Volunteer Management System to streamline donation and volunteer activities. The system will allow donors to contribute money or items, while organizations can post their needs such as food, clothes, or other essential resources. Volunteers can register through the platform and participate in events or activities organized by these institutions. This system will improve coordination, ensure better resource utilization and promote transparency and community involvement.
