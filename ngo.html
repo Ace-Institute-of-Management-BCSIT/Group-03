@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO — CareConnect</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="ngo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="ngo.html" class="active">NGO</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons"></div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <div class="page-hero-badge">🌍 Organizations</div>
+        <h1>Empowering NGOs for Greater Reach</h1>
+        <p>Discover verified NGOs, explore their campaigns, and partner with organizations creating lasting change across Nepal.</p>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <div class="section-header">
+        <h2>How CareConnect Helps NGOs</h2>
+        <p class="section-sub">A complete toolkit — from registration to donor outreach — built for Nepali nonprofit organizations.</p>
+    </div>
+    <div class="steps-grid">
+        <div class="step-card"><div class="step-num">1</div><h4>Register & Verify</h4><p>Submit your NGO profile and get verified by the CareConnect team within 48 hours.</p></div>
+        <div class="step-card"><div class="step-num">2</div><h4>Post Campaigns</h4><p>Create fundraising campaigns, volunteer drives, and community needs postings.</p></div>
+        <div class="step-card"><div class="step-num">3</div><h4>Manage Volunteers</h4><p>Review applications, schedule shifts, and track volunteer hours on your dashboard.</p></div>
+        <div class="step-card"><div class="step-num">4</div><h4>Receive Donations and Track impact</h4><p>Donors contact you directly through the platform — no middlemen involved and Use analytics dashboards</p></div>
+    </div>
+</section>
+
+<!-- NGO DIRECTORY -->
+<div class="ngo-directory">
+    <div class="ngo-top">
+        <h2>Verified NGO Directory</h2>
+    </div>
+
+    <div id="ngo-info-banner" class="ngo-info-banner" style="display:none;">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>To request donations from an NGO, please contact them directly or reach out through your admin.</span>
+    </div>
+
+    <div class="ngo-grid" id="ngoGrid">
+
+        <div class="ngo-card" data-cat="education health">
+            <div class="ngo-card-header">
+                <div class="ngo-logo" style="background:linear-gradient(135deg,#1565C0,#42A5F5);">H</div>
+                <div class="ngo-card-info">
+                    <div class="ngo-name">HopeNepal Foundation</div>
+                    <div class="ngo-meta-row">
+                        <span class="ngo-location"><i class="fa-solid fa-location-dot"></i> Kathmandu</span>
+                        <span class="ngo-verified">✓ Verified</span>
+                        <span class="badge badge-blue">Est. 2015</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ngo-desc">Works toward holistic community development through education, health camps, and livelihood programs in rural and semi-urban areas of Nepal.</div>
+            <div class="ngo-focus"><span class="ngo-focus-tag">Education</span><span class="ngo-focus-tag">Health</span><span class="ngo-focus-tag">Livelihood</span></div>
+            <div class="ngo-stats-row">
+                <div class="ngo-stat"><div class="ngo-stat-val">320</div><div class="ngo-stat-lbl">Volunteers</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">NPR 8.4L</div><div class="ngo-stat-lbl">Raised</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">12</div><div class="ngo-stat-lbl">Campaigns</div></div>
+            </div>
+            <div class="ngo-card-actions">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="showToast('HopeNepal profile coming soon')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="ngo-card" data-cat="health">
+            <div class="ngo-card-header">
+                <div class="ngo-logo" style="background:linear-gradient(135deg,#C62828,#EF5350);">N</div>
+                <div class="ngo-card-info">
+                    <div class="ngo-name">Nepal Health Initiative</div>
+                    <div class="ngo-meta-row">
+                        <span class="ngo-location"><i class="fa-solid fa-location-dot"></i> Lalitpur</span>
+                        <span class="ngo-verified">✓ Verified</span>
+                        <span class="badge badge-blue">Est. 2018</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ngo-desc">Mobile health camp pioneer delivering free checkups, medicines, and maternal healthcare to underserved communities across 10+ districts.</div>
+            <div class="ngo-focus"><span class="ngo-focus-tag">Healthcare</span><span class="ngo-focus-tag">Maternal</span><span class="ngo-focus-tag">Mobile Camps</span></div>
+            <div class="ngo-stats-row">
+                <div class="ngo-stat"><div class="ngo-stat-val">180</div><div class="ngo-stat-lbl">Volunteers</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">NPR 5.2L</div><div class="ngo-stat-lbl">Raised</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">8</div><div class="ngo-stat-lbl">Campaigns</div></div>
+            </div>
+            <div class="ngo-card-actions">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="showToast('NHI profile coming soon')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="ngo-card" data-cat="environment">
+            <div class="ngo-card-header">
+                <div class="ngo-logo" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">G</div>
+                <div class="ngo-card-info">
+                    <div class="ngo-name">Green Nepal</div>
+                    <div class="ngo-meta-row">
+                        <span class="ngo-location"><i class="fa-solid fa-location-dot"></i> Kathmandu</span>
+                        <span class="ngo-verified">✓ Verified</span>
+                        <span class="badge badge-blue">Est. 2019</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ngo-desc">Environmental conservation organization running tree plantation drives, river clean-ups, and climate change awareness programs across Nepal's urban centers.</div>
+            <div class="ngo-focus"><span class="ngo-focus-tag">Environment</span><span class="ngo-focus-tag">Climate</span><span class="ngo-focus-tag">Conservation</span></div>
+            <div class="ngo-stats-row">
+                <div class="ngo-stat"><div class="ngo-stat-val">540</div><div class="ngo-stat-lbl">Volunteers</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">NPR 2.1L</div><div class="ngo-stat-lbl">Raised</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">15</div><div class="ngo-stat-lbl">Campaigns</div></div>
+            </div>
+            <div class="ngo-card-actions">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="showToast('Green Nepal profile coming soon')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="ngo-card" data-cat="disaster">
+            <div class="ngo-card-header">
+                <div class="ngo-logo" style="background:linear-gradient(135deg,#E65100,#FF9800);">R</div>
+                <div class="ngo-card-info">
+                    <div class="ngo-name">Rebuild Nepal</div>
+                    <div class="ngo-meta-row">
+                        <span class="ngo-location"><i class="fa-solid fa-location-dot"></i> Bhaktapur</span>
+                        <span class="ngo-verified">✓ Verified</span>
+                        <span class="badge badge-orange">Emergency</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ngo-desc">Specializing in rapid disaster response, post-disaster rehabilitation, and building community resilience against earthquakes, floods, and landslides.</div>
+            <div class="ngo-focus"><span class="ngo-focus-tag">Disaster Relief</span><span class="ngo-focus-tag">Rehabilitation</span><span class="ngo-focus-tag">Emergency</span></div>
+            <div class="ngo-stats-row">
+                <div class="ngo-stat"><div class="ngo-stat-val">410</div><div class="ngo-stat-lbl">Volunteers</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">NPR 15.2L</div><div class="ngo-stat-lbl">Raised</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">6</div><div class="ngo-stat-lbl">Campaigns</div></div>
+            </div>
+            <div class="ngo-card-actions">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="showToast('Rebuild Nepal profile coming soon')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="ngo-card" data-cat="women">
+            <div class="ngo-card-header">
+                <div class="ngo-logo" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">W</div>
+                <div class="ngo-card-info">
+                    <div class="ngo-name">WomenRise Nepal</div>
+                    <div class="ngo-meta-row">
+                        <span class="ngo-location"><i class="fa-solid fa-location-dot"></i> Lalitpur</span>
+                        <span class="ngo-verified">✓ Verified</span>
+                        <span class="badge badge-purple">Women-led</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ngo-desc">Empowers rural women through digital literacy, micro-finance, and vocational training programs. Advocates for gender equality and women's rights.</div>
+            <div class="ngo-focus"><span class="ngo-focus-tag">Women</span><span class="ngo-focus-tag">Digital Literacy</span><span class="ngo-focus-tag">Empowerment</span></div>
+            <div class="ngo-stats-row">
+                <div class="ngo-stat"><div class="ngo-stat-val">95</div><div class="ngo-stat-lbl">Volunteers</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">NPR 3.7L</div><div class="ngo-stat-lbl">Raised</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">7</div><div class="ngo-stat-lbl">Campaigns</div></div>
+            </div>
+            <div class="ngo-card-actions">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="showToast('WomenRise profile coming soon')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="ngo-card" data-cat="women education">
+            <div class="ngo-card-header">
+                <div class="ngo-logo" style="background:linear-gradient(135deg,#0277BD,#29B6F6);">Y</div>
+                <div class="ngo-card-info">
+                    <div class="ngo-name">Youth4Change</div>
+                    <div class="ngo-meta-row">
+                        <span class="ngo-location"><i class="fa-solid fa-location-dot"></i> Kathmandu</span>
+                        <span class="ngo-verified">✓ Verified</span>
+                        <span class="badge badge-blue">Est. 2020</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ngo-desc">Youth-led organization working on street children rehabilitation, mentorship programs, and civic engagement for Nepal's next generation of leaders.</div>
+            <div class="ngo-focus"><span class="ngo-focus-tag">Youth</span><span class="ngo-focus-tag">Mentorship</span><span class="ngo-focus-tag">Street Children</span></div>
+            <div class="ngo-stats-row">
+                <div class="ngo-stat"><div class="ngo-stat-val">220</div><div class="ngo-stat-lbl">Volunteers</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">NPR 1.8L</div><div class="ngo-stat-lbl">Raised</div></div>
+                <div class="ngo-stat"><div class="ngo-stat-val">9</div><div class="ngo-stat-lbl">Campaigns</div></div>
+            </div>
+            <div class="ngo-card-actions">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="showToast('Youth4Change profile coming soon')">View Profile</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- REGISTER NGO — shown only to NGO role (or signed-out shows gate) -->
+<section class="register-ngo-section">
+    <div class="register-ngo-layout">
+        <div class="register-ngo-info">
+            <h2>Register Your NGO</h2>
+            <p>Join 180+ verified organizations using CareConnect to manage campaigns, volunteers, and donations with full transparency.</p>
+            <ul class="feature-list">
+                <li><div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div><div><strong>Verified badge</strong> — Build donor trust with our transparent verification process.</div></li>
+                <li><div class="feat-icon"><i class="fa-solid fa-chart-line"></i></div><div><strong>Analytics dashboard</strong> — Track donations, volunteers, and campaign performance in real time.</div></li>
+                <li><div class="feat-icon"><i class="fa-solid fa-bullhorn"></i></div><div><strong>Campaign tools</strong> — Post needs, run fundraisers, and reach thousands of donors.</div></li>
+                <li><div class="feat-icon"><i class="fa-solid fa-users-gear"></i></div><div><strong>Volunteer management</strong> — Manage applications, schedules, and certificates in one place.</div></li>
+                <li><div class="feat-icon"><i class="fa-solid fa-file-invoice"></i></div><div><strong>Donation receipts</strong> — Automatically generate and send tax receipts to donors.</div></li>
+            </ul>
+        </div>
+
+        <!-- Gate shown to non-NGO / signed-out users -->
+        <div id="ngo-form-gate" class="ngo-gate" style="display:none;">
+            <i class="fa-solid fa-lock"></i>
+            <h4>NGO Registration is for Organizations Only</h4>
+            <p>You need to be signed in as an NGO to register your organization. If you don't have an account yet, create one and select the NGO role.</p>
+            <button class="btn-gate-signin" onclick="openSignInModal()">Sign in as NGO →</button>
+        </div>
+
+        <!-- Actual form — shown only to signed-in NGO users -->
+        <div id="ngo-register-form-wrap" class="ngo-register-form" style="display:none;">
+            <h3>Get Started — It's Free</h3>
+            <form onsubmit="handleNGORegister(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Organization name *</label>
+                        <input type="text" id="ngo-name" placeholder="Your NGO name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Registration No. *</label>
+                        <input type="text" id="ngo-reg" placeholder="e.g. 12345/078-79" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Organization type *</label>
+                    <select id="ngo-type" required>
+                        <option value="">Select type</option>
+                        <option>NGO (Non-Governmental Organization)</option>
+                        <option>INGO (International NGO)</option>
+                        <option>Community-Based Organization</option>
+                        <option>Social Enterprise</option>
+                        <option>Foundation / Trust</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Primary focus area *</label>
+                        <select id="ngo-focus" required>
+                            <option value="">Select area</option>
+                            <option>Education</option><option>Health</option><option>Environment</option>
+                            <option>Disaster Relief</option><option>Women & Gender</option>
+                            <option>Youth Development</option><option>Livelihood</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>District *</label>
+                        <select id="ngo-district" required>
+                            <option value="">Select district</option>
+                            <option>Kathmandu</option><option>Lalitpur</option><option>Bhaktapur</option>
+                            <option>Pokhara</option><option>Chitwan</option><option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Contact person name *</label>
+                    <input type="text" id="ngo-contact" placeholder="Full name of authorized contact" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email address *</label>
+                        <input type="email" id="ngo-email" placeholder="org@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input type="tel" id="ngo-phone" placeholder="+977 01-XXXXXXX">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Brief description</label>
+                    <textarea id="ngo-desc-input" rows="3" placeholder="What does your organization do? (max 200 words)"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:15px;">
+                    <i class="fa-solid fa-paper-plane"></i> Submit for Verification
+                </button>
+                <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:10px;">We'll review and verify your NGO within 48 hours. Free forever.</p>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <!-- Brand Column -->
+        <div class="footer-col">
+            <h2>CareConnect</h2>
+            <p class="footer-tagline">Beauty in giving, perfected through action.</p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">Volunteer</a></li>
+                <li><a href="#">NGO</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Us Column -->
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <ul class="footer-contact">
+                <li><i class="fa-regular fa-envelope"></i> Email: info@careconnect.com</li>
+                <li><i class="fa-solid fa-phone"></i> Phone: (01) 456-7890</li>
+                <li><i class="fa-solid fa-location-dot"></i> Location: Kathmandu, Nepal</li>
+            </ul>
+        </div>
+
+        <!-- Social Column (optional) -->
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="footer-bottom">
+        <p>© 2026 CareConnect. All rights reserved.</p>
+    </div>
+</footer>
+<div id="toastMsg"></div>
+
+<!-- SIGN IN MODAL -->
+<div id="signin-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left"><div class="modal-logo">CareConnect</div><h2>Every act of<br>giving matters</h2><p>Nepal's smart platform for donors, volunteers, and organizations.</p></div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Welcome back</h3><p>Sign in to your CareConnect account</p></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signin-email" placeholder="you@example.com" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signin-password" placeholder="••••••••" required><button type="button" class="toggle-password" onclick="toggleSigninPassword()"><i class="fa-regular fa-eye" id="signin-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Sign in as</label><select id="signin-role" class="form-select"><option value="">Select your role</option><option value="donor">💚 Donor</option><option value="volunteer">🙋 Volunteer</option><option value="ngo">🌍 NGO / Organization</option><option value="admin">🏢 Admin</option></select></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" checked> Remember me</label><a href="#" class="forgot-link">Forgot password?</a></div>
+                    <button type="submit" class="btn-submit">Sign in →</button>
+                    <p class="signup-prompt">Don't have an account? <a href="#" onclick="switchFromSignInToSignUp(event)">Create account →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SIGN UP MODAL -->
+<div id="signup-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignUpModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left"><div class="modal-logo">CareConnect</div><h2>Join the<br>CareConnect family</h2><p>Create your free account and start making a difference.</p></div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Create account</h3><p>Join CareConnect and start your journey</p></div>
+                <form onsubmit="handleSignUp(event)">
+                    <div class="form-group"><label>Full name</label><div class="input-icon"><i class="fa-regular fa-user"></i><input type="text" id="signup-name" placeholder="John Doe" required></div></div>
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signup-email" placeholder="you@example.com" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signup-password" placeholder="Create a strong password" required><button type="button" class="toggle-password" onclick="toggleSignupPassword()"><i class="fa-regular fa-eye" id="signup-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Confirm password</label><div class="input-icon"><i class="fa-solid fa-lock"></i><input type="password" id="signup-confirm-password" placeholder="Confirm your password" required></div></div>
+                    <div class="form-group"><label>I want to join as</label><div class="role-selector"><div class="role-option" onclick="selectRole('donor')" id="role-donor"><span class="role-icon">💚</span><div class="role-info"><strong>Donor</strong><small>Give & track donations</small></div><span class="role-check">✓</span></div><div class="role-option" onclick="selectRole('volunteer')" id="role-volunteer"><span class="role-icon">🙋</span><div class="role-info"><strong>Volunteer</strong><small>Help & serve communities</small></div><span class="role-check">✓</span></div><div class="role-option" onclick="selectRole('ngo')" id="role-ngo"><span class="role-icon">🌍</span><div class="role-info"><strong>NGO / Organization</strong><small>Manage campaigns</small></div><span class="role-check">✓</span></div></div><input type="hidden" id="selected-role" value=""></div>
+                    <div class="form-group" id="org-name-group" style="display:none;"><label>Organization name</label><div class="input-icon"><i class="fa-regular fa-building"></i><input type="text" id="org-name" placeholder="Your organization name"></div></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" id="terms-checkbox" required> I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label></div>
+                    <button type="submit" class="btn-submit">Create my account →</button>
+                    <p class="signup-prompt">Already have an account? <a href="#" onclick="switchToSignIn()">Sign in →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="ngo.js"></script>
+<script>
+    function applyNGOView() {
+        const role = getRole();
+        const gate = document.getElementById('ngo-form-gate');
+        const form = document.getElementById('ngo-register-form-wrap');
+        const banner = document.getElementById('ngo-info-banner');
+
+        if (!isSignedIn()) {
+            // Not signed in: show gate, hide form, no banner
+            gate.style.display = 'block';
+            form.style.display = 'none';
+            banner.style.display = 'none';
+        } else if (role === 'ngo') {
+            // NGO signed in: show form, hide gate, no banner
+            gate.style.display = 'none';
+            form.style.display = 'block';
+            banner.style.display = 'none';
+        } else if (role === 'admin') {
+            // Admin: show form too (admin manages everything)
+            gate.style.display = 'none';
+            form.style.display = 'block';
+            banner.style.display = 'none';
+        } else {
+            // Donor or volunteer: show info banner, hide form and gate
+            gate.style.display = 'none';
+            form.style.display = 'none';
+            banner.style.display = 'flex';
+        }
+    }
+
+    function handleNGORegister(event) {
+        event.preventDefault();
+        const name = document.getElementById('ngo-name').value;
+        showToast(`✅ "${name}" submitted for verification! We'll contact you within 48 hours.`);
+        event.target.reset();
+    }
+
+    // Called by shared.js after sign-in/sign-out
+    function onSessionChange() { applyNGOView(); }
+
+    document.addEventListener('DOMContentLoaded', applyNGOView);
+</script>
+</body>
+</html>

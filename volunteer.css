@@ -1,0 +1,148 @@
+/* =============================================
+   CARECONNECT — VOLUNTEER PAGE CSS
+   ============================================= */
+
+/* ── Opportunities Grid ── */
+.opportunities { padding: 50px 8%; max-width: 1400px; margin: 0 auto; }
+
+.opp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+.opp-card {
+    background: white; border-radius: 20px; border: 1px solid var(--border);
+    overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column;
+}
+.opp-card:hover {
+    transform: translateY(-5px); border-color: var(--blue);
+    box-shadow: 0 12px 30px rgba(21,101,192,0.12);
+}
+.opp-card-top { padding: 1.4rem 1.4rem 1rem; flex: 1; }
+.opp-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 10px; margin-bottom: 0.8rem;
+}
+.opp-org { display: flex; align-items: center; gap: 10px; }
+.org-logo {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg, #1565C0, #42A5F5);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 16px; flex-shrink: 0;
+}
+.org-info-name { font-size: 12px; font-weight: 700; color: var(--text); }
+.org-info-type { font-size: 11px; color: var(--muted); }
+.opp-urgent {
+    background: #FFF3E0; color: #E65100;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 20px; white-space: nowrap;
+}
+.opp-title { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 7px; line-height: 1.35; }
+.opp-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+.opp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.opp-tag {
+    background: var(--blue-bg); color: var(--blue);
+    font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+}
+.opp-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.opp-meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+.opp-meta-item i { font-size: 12px; color: var(--blue); width: 14px; }
+.opp-card-bottom {
+    padding: 1rem 1.4rem; border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.opp-spots { font-size: 12px; color: var(--muted); }
+.opp-spots strong { color: var(--blue); }
+.btn-apply {
+    background: var(--blue); color: white; border: none;
+    padding: 9px 22px; border-radius: 30px;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; font-family: 'Inter', sans-serif;
+}
+.btn-apply:hover {
+    background: var(--blue-dark); transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(21,101,192,0.25);
+}
+
+/* ── Sign-in warning banner ── */
+.signin-warning {
+    background: #FFF8E1;
+    border: 1.5px solid #FFE082;
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 2rem;
+}
+.signin-warning i { font-size: 1.5rem; color: #F9A825; flex-shrink: 0; }
+.signin-warning-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.signin-warning-body p  { font-size: 13px; color: var(--muted); }
+.signin-warning-body a  { color: var(--blue); font-weight: 600; cursor: pointer; text-decoration: underline; }
+
+/* ── Register Section ── */
+.register-section { background: white; padding: 60px 8%; }
+.register-layout {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+}
+.register-info h2 { font-size: 2rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem; }
+.register-info p  { color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem; }
+.register-benefits { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.register-benefits li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--text); }
+.benefit-icon {
+    width: 32px; height: 32px; background: var(--blue-light);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.benefit-icon i { font-size: 13px; color: var(--blue); }
+
+.register-form {
+    background: var(--blue-bg); border-radius: 24px; padding: 2rem; border: 1px solid var(--border);
+}
+.register-form h3 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; }
+
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.skill-chip {
+    display: flex; align-items: center; gap: 7px;
+    padding: 8px 12px; border: 1.5px solid var(--border);
+    border-radius: 10px; background: white;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+}
+.skill-chip:hover { border-color: var(--blue); color: var(--blue); }
+.skill-chip.selected { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
+
+/* ── Stats Bar ── */
+.vol-stats {
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    padding: 50px 8%; color: white;
+}
+.vol-stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center;
+}
+.vol-stat-value { font-size: 2.5rem; font-weight: 800; margin-bottom: 6px; }
+.vol-stat-label { font-size: 0.85rem; opacity: 0.85; }
+
+/* ── Gate message for unregistered users on register form ── */
+.vol-gate {
+    background: #FFF8E1;
+    border: 1px solid #FFE082;
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+}
+.vol-gate i { font-size: 2rem; color: #F9A825; margin-bottom: 10px; display: block; }
+.vol-gate h4 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.vol-gate p  { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.btn-gate-signin {
+    background: var(--blue); color: white; border: none;
+    padding: 11px 28px; border-radius: 30px;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.btn-gate-signin:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .register-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .opp-grid { grid-template-columns: 1fr; }
+}

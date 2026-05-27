@@ -1,0 +1,164 @@
+
+/* ── Main Layout ── */
+.donate-layout {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 2.5rem;
+    max-width: 1200px; margin: 0 auto; padding: 60px 5%;
+}
+
+/* ── Causes Section ── */
+.causes-section { padding: 0; }
+.causes-section h2 { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--text); 
+  margin-bottom: 1.2rem; }
+
+.cause-card {
+    background: white; 
+    border-radius: 18px; 
+    border: 1px solid var(--border);
+    margin-bottom: 1.2rem; 
+    overflow: hidden; 
+    transition: all 0.3s; 
+    cursor: pointer;
+}
+.cause-card:hover { 
+  border-color: var(--blue); 
+  box-shadow: 0 8px 24px rgba(21,101,192,0.1); 
+  transform: translateY(-2px); }
+.cause-card.selected { 
+  border-color: var(--blue); 
+  box-shadow: 0 0 0 3px rgba(21,101,192,0.15); }
+.cause-card-inner { 
+  display: flex; 
+  gap: 1rem; 
+  padding: 1.2rem; 
+  align-items: flex-start; }
+.cause-icon {
+    width: 52px; 
+    height: 52px; 
+    background: var(--blue-light);
+    border-radius: 14px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-shrink: 0;
+}
+.cause-icon i { 
+  font-size: 1.4rem; 
+  color: var(--blue); }
+.cause-body { 
+  flex: 1; }
+.cause-top { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 4px; }
+.cause-title { 
+  font-size: 1rem; 
+  font-weight: 700; 
+  color: var(--text); }
+.cause-raised {
+    font-size: 12px; 
+    font-weight: 600; 
+    color: var(--blue);
+    background: var(--blue-light); 
+    padding: 3px 10px; 
+    border-radius: 20px;
+}
+.cause-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+.progress-bar-wrap { background: #EEF4FB; border-radius: 10px; height: 7px; overflow: hidden; }
+.progress-bar-fill {
+    height: 100%; background: linear-gradient(90deg, var(--blue), #42A5F5);
+    border-radius: 10px; transition: width 0.8s ease;
+}
+.progress-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+/* ── Donate Form Panel ── */
+.donate-form-panel {
+    background: white; border-radius: 24px; padding: 2rem;
+    border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(21,101,192,0.08);
+    position: sticky; top: 90px; height: fit-content;
+}
+.form-panel-title { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.form-panel-sub   { font-size: 0.83rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+.selected-cause-tag {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--blue-light); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 14px; margin-bottom: 1.2rem;
+    font-size: 13px; font-weight: 600; color: var(--blue);
+}
+.selected-cause-tag i { opacity: 0.7; }
+
+
+/* Frequency toggle */
+.freq-toggle {
+    display: flex; background: var(--blue-bg);
+    border-radius: 12px; padding: 4px; margin-bottom: 1.2rem;
+}
+.freq-btn {
+    flex: 1; padding: 9px; border: none; background: transparent;
+    border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--muted);
+    cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+}
+.freq-btn.active { background: var(--blue); color: white; box-shadow: 0 2px 8px rgba(21,101,192,0.25); }
+
+
+/* ── Sign-in gate on donate panel ── */
+.donate-gate {
+    background: #FFF8E1; border: 1.5px solid #FFE082;
+    border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 1.2rem;
+}
+.donate-gate i { font-size: 2rem; color: #F9A825; margin-bottom: 10px; display: block; }
+.donate-gate h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.donate-gate p  { font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; }
+.btn-gate-signin {
+    background: var(--blue); color: white; border: none;
+    padding: 11px 28px; border-radius: 30px;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.btn-gate-signin:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+/* ── Impact Section ── */
+.impact-section { background: white; padding: 60px 8%; }
+.impact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; max-width: 1200px; margin: 2rem auto 0;
+}
+.impact-card {
+    text-align: center; padding: 1.8rem 1rem;
+    background: var(--blue-bg); border-radius: 20px; border: 1px solid var(--border);
+}
+.impact-amount { font-size: 2rem; font-weight: 800; color: var(--blue); margin-bottom: 6px; }
+.impact-label  { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+
+/* ── Recent Donors ── */
+.recent-donors { max-width: 1200px; margin: 0 auto; padding: 50px 5%; }
+.recent-donors h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--text); }
+.donors-list { display: flex; flex-direction: column; gap: 10px; }
+.donor-row {
+    display: flex; align-items: center; gap: 14px;
+    background: white; border-radius: 14px; padding: 14px 18px; border: 1px solid var(--border);
+}
+.donor-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #1565C0, #42A5F5);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 15px; flex-shrink: 0;
+}
+.donor-info { flex: 1; }
+.donor-name   { font-size: 14px; font-weight: 600; color: var(--text); }
+.donor-cause  { font-size: 12px; color: var(--muted); }
+.donor-amount { font-size: 15px; font-weight: 700; color: var(--blue); }
+.donor-time   { font-size: 11px; color: var(--muted); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .donate-layout { grid-template-columns: 1fr; padding: 40px 5%; }
+    .donate-form-panel { position: static; }
+}
+
