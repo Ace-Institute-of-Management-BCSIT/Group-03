@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NGO Dashboard - CareConnect</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <div class="nav-buttons"></div>
+</header>
+
+<h1>NGO Dashboard</h1>
+
+<!-- PROFILE SECTION -->
+<div id="ngo-profile">
+    <h2>My Profile</h2>
+
+    <p><b>Name:</b> <span id="ngo-name"></span></p>
+    <p><b>Email:</b> <span id="ngo-email"></span></p>
+
+    <input type="text" id="ngo-org" placeholder="Organization Name">
+    <button onclick="updateNGOProfile()">Update Profile</button>
+</div>
+
+<!-- REQUEST SECTION (placeholder for future) -->
+<div>
+    <h2>Requests</h2>
+    <p>NGO requests system will go here.</p>
+</div>
+
+<script src="shared.js"></script>
+<script src="ngo.js"></script>
+
+</body>
+</html>
