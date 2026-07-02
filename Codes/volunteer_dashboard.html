@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard — CareConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        .dash-wrap { max-width: 1100px; margin: 0 auto; padding: 50px 5% 80px; }
+        .profile-card { background:var(--blue-bg); border:1px solid var(--border); border-radius:18px; padding:1.5rem; margin-bottom:2rem; display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:space-between; }
+        .profile-card-info p { font-size:13px; color:var(--muted); margin: 4px 0; }
+        .profile-card-info b { color: var(--text); }
+        .status-applied{color:#1565C0;} .status-accepted{color:#2E7D32;} .status-rejected{color:#C62828;} .status-completed{color:#6A1B9A;}
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="ngo.html">NGO</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons"></div>
+</header>
+
+<div class="dash-wrap">
+    <div id="dash-gate" class="admin-gate" style="display:none;">
+        <i class="fa-solid fa-lock"></i>
+        <h3>Sign in to view your dashboard</h3>
+        <p>This dashboard is only visible to signed-in volunteers.</p>
+        <button class="btn-gate-signin" onclick="openSignInModal()">Sign in →</button>
+    </div>
+
+    <div id="dash-content" style="display:none;">
+        <div class="admin-header">
+            <div>
+                <h1>My Volunteer Dashboard</h1>
+                <p>Your profile and every opportunity you've applied to.</p>
+            </div>
+        </div>
+
+        <div class="profile-card" id="profileCard">
+            <div class="profile-card-info">
+                <p><b>Phone:</b> <span id="pPhone">—</span></p>
+                <p><b>District:</b> <span id="pDistrict">—</span></p>
+                <p><b>Availability:</b> <span id="pAvail">—</span></p>
+                <p><b>Skills:</b> <span id="pSkills">—</span></p>
+            </div>
+            <div>
+                <button class="btn-ngo-view btn-ngo-outline" onclick="window.location.href='volunteer.html#vol-register-form-wrap'">Edit profile →</button>
+            </div>
+        </div>
+
+        <div class="admin-table-wrap">
+            <div class="admin-table-title">My Applications</div>
+            <table class="admin-table">
+                <thead><tr><th>Opportunity</th><th>NGO / Cause</th><th>Availability</th><th>Status</th><th>Applied</th></tr></thead>
+                <tbody id="appsBody"><tr><td colspan="5" class="admin-empty">Loading...</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="toastMsg"></div>
+
+<!-- SIGN IN MODAL -->
+<div id="signin-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left"><div class="modal-logo">CareConnect</div><h2>Every act of<br>giving matters</h2></div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Welcome back</h3><p>Sign in to your CareConnect account</p></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signin-email" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signin-password" required><button type="button" class="toggle-password" onclick="toggleSigninPassword()"><i class="fa-regular fa-eye" id="signin-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Sign in as</label><select id="signin-role" class="form-select"><option value="">Select your role</option><option value="donor">💚 Donor</option><option value="volunteer">🙋 Volunteer</option><option value="ngo">🌍 NGO / Organization</option><option value="admin">🏢 Admin</option></select></div>
+                    <button type="submit" class="btn-submit">Sign in →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const session = getSession();
+    if (!session || session.role !== 'volunteer') {
+        document.getElementById('dash-gate').style.display = 'block';
+        return;
+    }
+    document.getElementById('dash-content').style.display = 'block';
+    loadVolunteerActivity(session.id);
+});
+
+async function loadVolunteerActivity(userId) {
+    try {
+        const res = await fetch(`api/volunteer_activity.php?user_id=${userId}`);
+        const data = await res.json();
+        if (!data.success) return;
+
+        if (data.profile) {
+            document.getElementById('pPhone').textContent    = data.profile.phone || '—';
+            document.getElementById('pDistrict').textContent = data.profile.district || '—';
+            document.getElementById('pAvail').textContent    = data.profile.availability || '—';
+            document.getElementById('pSkills').textContent   = data.profile.skills || '—';
+        } else {
+            document.getElementById('profileCard').innerHTML = `<p style="font-size:13px;color:var(--muted);">You haven't completed your volunteer profile yet. <a href="volunteer.html#vol-register-form-wrap">Register now →</a></p>`;
+        }
+
+        const body = document.getElementById('appsBody');
+        body.innerHTML = data.applications.length ? data.applications.map(a => `
+            <tr>
+                <td>${a.opportunity}</td>
+                <td>${a.ngo_name || a.cause_title || '—'}</td>
+                <td>${a.availability}</td>
+                <td><span class="pill status-${a.status}">${a.status}</span></td>
+                <td>${new Date(a.applied_at).toLocaleDateString()}</td>
+            </tr>
+        `).join('') : '<tr><td colspan="5" class="admin-empty">No applications yet. <a href="volunteer.html">Browse opportunities →</a></td></tr>';
+
+    } catch (err) {
+        console.error(err);
+        showToast('⚠️ Could not load your activity.');
+    }
+}
+</script>
+</body>
+</html>

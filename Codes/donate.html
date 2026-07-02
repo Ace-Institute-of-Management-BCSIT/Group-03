@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate — CareConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="donate.css?v=3">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html" class="active">Donate</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="ngo.html">NGO</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons"></div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <div class="page-hero-badge">💚 Make a Difference</div>
+        <h1>Donate with Transparency</h1>
+        <p>Every rupee you give is tracked and reported. Choose a cause, set your amount, and watch your impact unfold in real time.</p>
+    </div>
+</section>
+
+<!-- MAIN DONATE LAYOUT -->
+<div class="donate-layout">
+
+    <!-- LEFT: CAUSES -->
+    <div class="causes-section">
+        <h2>Choose a Cause</h2>
+
+        <div class="cause-card selected" data-cause-id="1" onclick="selectCause(this, 'Education for All Children')">
+            <div class="cause-card-inner">
+                <div class="cause-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="cause-body">
+                    <div class="cause-top">
+                        <span class="cause-title">Education for All Children</span>
+                        <span class="cause-raised">NPR 8.4L raised</span>
+                    </div>
+                    <p class="cause-desc">Provide school supplies, uniforms, and tuition support for underprivileged children across rural Nepal.</p>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:68%"></div></div>
+                    <div class="progress-meta"><span>68% of goal</span><span>NPR 12.3L goal</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cause-card" data-cause-id="2" onclick="selectCause(this, 'Clean Water Initiative')">
+            <div class="cause-card-inner">
+                <div class="cause-icon"><i class="fa-solid fa-droplet"></i></div>
+                <div class="cause-body">
+                    <div class="cause-top">
+                        <span class="cause-title">Clean Water Initiative</span>
+                        <span class="cause-raised">NPR 5.1L raised</span>
+                    </div>
+                    <p class="cause-desc">Build water purification systems and safe drinking wells for remote mountain villages in Nepal.</p>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:51%"></div></div>
+                    <div class="progress-meta"><span>51% of goal</span><span>NPR 10L goal</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cause-card" data-cause-id="3" onclick="selectCause(this, 'Women Empowerment Program')">
+            <div class="cause-card-inner">
+                <div class="cause-icon"><i class="fa-solid fa-venus"></i></div>
+                <div class="cause-body">
+                    <div class="cause-top">
+                        <span class="cause-title">Women Empowerment Program</span>
+                        <span class="cause-raised">NPR 3.7L raised</span>
+                    </div>
+                    <p class="cause-desc">Support vocational training, micro-loans, and skill development for women entrepreneurs in Nepal.</p>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:37%"></div></div>
+                    <div class="progress-meta"><span>37% of goal</span><span>NPR 10L goal</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cause-card" data-cause-id="4" onclick="selectCause(this, 'Disaster Relief Fund')">
+            <div class="cause-card-inner">
+                <div class="cause-icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+                <div class="cause-body">
+                    <div class="cause-top">
+                        <span class="cause-title">Disaster Relief Fund</span>
+                        <span class="cause-raised">NPR 15.2L raised</span>
+                    </div>
+                    <p class="cause-desc">Emergency response fund for earthquake, flood, and landslide affected communities across Nepal.</p>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:76%"></div></div>
+                    <div class="progress-meta"><span>76% of goal</span><span>NPR 20L goal</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cause-card" data-cause-id="5" onclick="selectCause(this, 'Mental Health Awareness')">
+            <div class="cause-card-inner">
+                <div class="cause-icon"><i class="fa-solid fa-brain"></i></div>
+                <div class="cause-body">
+                    <div class="cause-top">
+                        <span class="cause-title">Mental Health Awareness</span>
+                        <span class="cause-raised">NPR 2.2L raised</span>
+                    </div>
+                    <p class="cause-desc">Fund free counseling services, awareness campaigns, and helpline support for youth mental health.</p>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:29%"></div></div>
+                    <div class="progress-meta"><span>29% of goal</span><span>NPR 7.5L goal</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGO-posted campaigns load in here automatically -->
+        <div id="dynamicCauseCards"></div>
+    </div>
+
+    <!-- RIGHT: FORM PANEL -->
+    <div>
+        <div class="donate-form-panel">
+            <div class="form-panel-title">Make a Donation</div>
+            <div class="form-panel-sub">Secure, transparent, and impactful</div>
+
+            <!-- Gate: shown when NOT signed in -->
+            <div id="donate-gate" class="donate-gate" style="display:none;">
+                <i class="fa-solid fa-lock"></i>
+                <h4>Sign in to Donate</h4>
+                <p>Please sign in or create a free account to make a donation or arrange an item drop-off.</p>
+                <button class="btn-gate-signin" onclick="openSignInModal()">Sign in to Continue →</button>
+            </div>
+
+            <!-- Full panel: shown when signed in -->
+            <div id="donate-panel-content" style="display:none;">
+
+                <div class="selected-cause-tag" id="selectedCauseTag">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span id="selectedCauseLabel">Education for All Children</span>
+                </div>
+
+                <!-- Donation Type -->
+                <label style="font-size:13px;font-weight:600;color:var(--text);display:block;margin-bottom:8px;">Donation type</label>
+                <div class="donation-type-grid">
+                    <div class="type-card active" id="type-cash" onclick="setType('cash')">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <span>Cash</span>
+                        <small>Direct transfer</small>
+                    </div>
+                    <div class="type-card" id="type-items" onclick="setType('items')">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span>Items / Goods</span>
+                        <small>Physical donation</small>
+                    </div>
+                </div>
+
+                <!-- ── CASH SECTION ── -->
+                <div id="cash-section">
+                    <label style="font-size:13px;font-weight:600;color:var(--text);display:block;margin-bottom:8px;">Donation frequency</label>
+                    <div class="freq-toggle">
+                        <button class="freq-btn active" onclick="setFreq(this,'One-time')">One-time</button>
+                        <button class="freq-btn" onclick="setFreq(this,'Monthly')">Monthly</button>
+                        <button class="freq-btn" onclick="setFreq(this,'Yearly')">Yearly</button>
+                    </div>
+
+                    <label style="font-size:13px;font-weight:600;color:var(--text);display:block;margin-bottom:8px;">Select amount (NPR)</label>
+                    <div class="amount-presets">
+                        <button class="amount-btn" onclick="setAmount(this,500)">500</button>
+                        <button class="amount-btn active" onclick="setAmount(this,1000)">1,000</button>
+                        <button class="amount-btn" onclick="setAmount(this,2500)">2,500</button>
+                        <button class="amount-btn" onclick="setAmount(this,5000)">5,000</button>
+                        <button class="amount-btn" onclick="setAmount(this,10000)">10,000</button>
+                        <button class="amount-btn" onclick="setAmount(this,25000)">25,000</button>
+                    </div>
+
+                    <div class="custom-amount-wrap">
+                        <span class="currency-prefix">NPR</span>
+                        <input type="number" id="customAmount" placeholder="Or enter custom amount" oninput="updateSummary()" value="1000">
+                    </div>
+
+                    <div class="donate-summary">
+                        <div class="summary-row"><span>Cause</span><span id="summCause" style="font-weight:600;color:var(--text);max-width:180px;text-align:right;">Education for All Children</span></div>
+                        <div class="summary-row"><span>Frequency</span><span id="summFreq">One-time</span></div>
+                        <div class="summary-row"><span>Amount</span><span id="summAmt">NPR 1,000</span></div>
+                        <div class="summary-row total"><span>Total</span><span id="summTotal">NPR 1,000</span></div>
+                    </div>
+
+                    <button class="btn-donate-now" onclick="handleDonate()">
+                        <i class="fa-solid fa-heart"></i> Donate Now
+                    </button>
+                    <div class="secure-note"><i class="fa-solid fa-lock"></i> 100% secure &amp; encrypted</div>
+                </div>
+
+                <!-- ── ITEMS SECTION ── -->
+                <div id="items-section">
+                    <div class="meetup-info">
+                        <i class="fa-solid fa-handshake"></i>
+                        <span>Arrange a convenient meetup with the NGO to hand over your donated items. Fill in your details below.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size:13px;font-weight:600;color:var(--text);">Items description *</label>
+                        <textarea id="items-desc" rows="3" placeholder="e.g. 10 school bags, 20 blankets, 5 kg rice…" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:13px;resize:vertical;margin-top:6px;"></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-top:14px;">
+                        <label style="font-size:13px;font-weight:600;color:var(--text);">Preferred meetup location *</label>
+                        <input type="text" id="meetup-location" placeholder="e.g. Ratnapark, Kathmandu" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:13px;margin-top:6px;">
+                    </div>
+
+                    <div class="form-group" style="margin-top:14px;">
+                        <label style="font-size:13px;font-weight:600;color:var(--text);">Preferred meetup time *</label>
+                        <input type="datetime-local" id="meetup-time" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:13px;margin-top:6px;">
+                    </div>
+
+                    <div class="form-group" style="margin-top:14px;">
+                        <label style="font-size:13px;font-weight:600;color:var(--text);">Your phone number *</label>
+                        <input type="tel" id="meetup-phone" placeholder="+977 98XXXXXXXX" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:13px;margin-top:6px;">
+                    </div>
+
+                    <button class="btn-arrange" style="margin-top:18px;" onclick="handleItemsDonate()">
+                        <i class="fa-solid fa-handshake"></i> Arrange Meetup
+                    </button>
+                    <div class="secure-note" style="margin-top:10px;"><i class="fa-solid fa-circle-info"></i> The NGO will confirm your meetup within 24 hours.</div>
+                </div>
+
+            </div><!-- end donate-panel-content -->
+        </div>
+    </div>
+</div>
+
+<!-- IMPACT SECTION -->
+<section class="impact-section">
+    <div class="section-header">
+        <h2>Your Impact at a Glance</h2>
+        <p class="section-sub">See what CareConnect donors have collectively achieved across Nepal.</p>
+    </div>
+    <div class="impact-grid">
+        <div class="impact-card"><div class="impact-amount">NPR 42L+</div><div class="impact-label">Total donations tracked</div></div>
+        <div class="impact-card"><div class="impact-amount">1,240</div><div class="impact-label">Active donors</div></div>
+        <div class="impact-card"><div class="impact-amount">38</div><div class="impact-label">Campaigns funded</div></div>
+        <div class="impact-card"><div class="impact-amount">98%</div><div class="impact-label">Transparency score</div></div>
+        <div class="impact-card"><div class="impact-amount">15+</div><div class="impact-label">Districts reached</div></div>
+    </div>
+</section>
+
+<!-- RECENT DONORS -->
+<div class="recent-donors">
+    <h2>Recent Donors</h2>
+    <div class="donors-list">
+        <div class="donor-row">
+            <div class="donor-avatar">S</div>
+            <div class="donor-info"><div class="donor-name">Sunita Rana</div><div class="donor-cause">Education for All Children</div></div>
+            <div><div class="donor-amount">NPR 2,500</div><div class="donor-time">2 hours ago</div></div>
+        </div>
+        <div class="donor-row">
+            <div class="donor-avatar">R</div>
+            <div class="donor-info"><div class="donor-name">Ramesh Adhikari</div><div class="donor-cause">Disaster Relief Fund</div></div>
+            <div><div class="donor-amount">NPR 5,000</div><div class="donor-time">5 hours ago</div></div>
+        </div>
+        <div class="donor-row">
+            <div class="donor-avatar">A</div>
+            <div class="donor-info"><div class="donor-name">Anonymous Donor</div><div class="donor-cause">Clean Water Initiative</div></div>
+            <div><div class="donor-amount">NPR 1,000</div><div class="donor-time">1 day ago</div></div>
+        </div>
+        <div class="donor-row">
+            <div class="donor-avatar">P</div>
+            <div class="donor-info"><div class="donor-name">Priya Shrestha</div><div class="donor-cause">Women Empowerment Program</div></div>
+            <div><div class="donor-amount">NPR 3,000</div><div class="donor-time">2 days ago</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <!-- Brand Column -->
+        <div class="footer-col">
+            <h2>CareConnect</h2>
+            <p class="footer-tagline">Beauty in giving, perfected through action.</p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="ngo.html">NGO</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Us Column -->
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <ul class="footer-contact">
+                <li><i class="fa-regular fa-envelope"></i> Email: info@careconnect.com</li>
+                <li><i class="fa-solid fa-phone"></i> Phone: (01) 456-7890</li>
+                <li><i class="fa-solid fa-location-dot"></i> Location: Kathmandu, Nepal</li>
+            </ul>
+        </div>
+
+        <!-- Social Column (optional) -->
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="footer-bottom">
+        <p>© 2026 CareConnect. All rights reserved.</p>
+    </div>
+</footer>
+
+<div id="toastMsg"></div>
+
+<!-- SIGN IN MODAL -->
+<div id="signin-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left">
+                <div class="modal-logo">CareConnect</div>
+                <h2>Every act of<br>giving matters</h2>
+                <p>Join CareConnect — Nepal's smart platform connecting donors, volunteers, and organizations for maximum social impact.</p>
+                <div class="modal-quote">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"CareConnect transformed how we manage our volunteers."</p>
+                    <div class="quote-author"><strong>Sunita Rana</strong><span>Director, HopeNepal Foundation</span></div>
+                </div>
+            </div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Welcome back</h3><p>Sign in to your CareConnect account</p></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signin-email" placeholder="you@gmail.com" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signin-password" placeholder="••••••••" required><button type="button" class="toggle-password" onclick="toggleSigninPassword()"><i class="fa-regular fa-eye" id="signin-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Sign in as</label><select id="signin-role" class="form-select"><option value="">Select your role</option><option value="donor">💚 Donor</option><option value="volunteer">🙋 Volunteer</option><option value="ngo">🌍 NGO / Organization</option><option value="admin">🏢 Admin</option></select></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" checked> Remember me</label><a href="#" class="forgot-link">Forgot password?</a></div>
+                    <button type="submit" class="btn-submit">Sign in to CareConnect →</button>
+                    <p class="signup-prompt">Don't have an account? <a href="#" onclick="switchFromSignInToSignUp(event)">Create account →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SIGN UP MODAL -->
+<div id="signup-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignUpModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left">
+                <div class="modal-logo">CareConnect</div>
+                <h2>Join the<br>CareConnect family</h2>
+                <p>Create your free account and start making a difference today.</p>
+            </div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Create account</h3><p>Join CareConnect and start your journey</p></div>
+                <form onsubmit="handleSignUp(event)">
+                    <div class="form-group"><label>Full name</label><div class="input-icon"><i class="fa-regular fa-user"></i><input type="text" id="signup-name" placeholder="John Doe" required></div></div>
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signup-email" placeholder="you@gmail.com" required></div></div>
+                   <div class="form-group">
+    <label>Password</label>
+    <div class="input-icon password-field">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="signup-password" placeholder="Create a strong password" required oninput="checkPasswordStrength(this)">
+        <button type="button" class="toggle-password" onclick="toggleSignupPassword()">
+            <i class="fa-regular fa-eye" id="signup-toggle-icon"></i>
+        </button>
+    </div>
+    <small id="password-strength-hint" class="password-hint">Minimum 8 characters</small>
+</div>
+                    <div class="form-group"><label>Confirm password</label><div class="input-icon"><i class="fa-solid fa-lock"></i><input type="password" id="signup-confirm-password" placeholder="Confirm your password" required></div></div>
+                    <div class="form-group">
+                        <label>I want to join as</label>
+                        <div class="role-selector">
+                            <div class="role-option" onclick="selectRole('donor')" id="role-donor"><span class="role-icon">💚</span><div class="role-info"><strong>Donor</strong><small>Give & track donations</small></div><span class="role-check">✓</span></div>
+                            <div class="role-option" onclick="selectRole('volunteer')" id="role-volunteer"><span class="role-icon">🙋</span><div class="role-info"><strong>Volunteer</strong><small>Help & serve communities</small></div><span class="role-check">✓</span></div>
+                            <div class="role-option" onclick="selectRole('ngo')" id="role-ngo"><span class="role-icon">🌍</span><div class="role-info"><strong>NGO / Organization</strong><small>Manage campaigns & volunteers</small></div><span class="role-check">✓</span></div>
+                        </div>
+                        <input type="hidden" id="selected-role" value="">
+                    </div>
+                    <div class="form-group" id="org-name-group" style="display:none;"><label>Organization name</label><div class="input-icon"><i class="fa-regular fa-building"></i><input type="text" id="org-name" placeholder="Your organization name"></div></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" id="terms-checkbox" required> I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label></div>
+                    <button type="submit" class="btn-submit">Create my account →</button>
+                    <p class="signup-prompt">Already have an account? <a href="#" onclick="switchToSignIn()">Sign in →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- QR DUMMY PAYMENT MODAL -->
+<div id="qr-payment-modal" class="modal">
+    <div class="modal-container" style="max-width:420px;">
+        <button class="modal-close" onclick="closeQrModal()">&times;</button>
+        <div style="padding:36px 32px;text-align:center;">
+            <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Scan to Pay</h3>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Demo payment — scan with any QR scanner app to simulate paying <strong id="qrAmountLabel">NPR 0</strong></p>
+
+            <div id="qrCodeBox" style="display:flex;justify-content:center;margin:0 auto 14px;padding:16px;background:#fff;border:1.5px solid var(--border);border-radius:16px;width:fit-content;"></div>
+
+            <div style="font-size:12px;color:var(--muted);background:var(--blue-bg);border-radius:10px;padding:8px 12px;margin-bottom:18px;word-break:break-all;">
+                Ref: <span id="qrRefLabel">—</span>
+            </div>
+
+            <button class="btn-donate-now" onclick="confirmQrPayment()">
+                <i class="fa-solid fa-check"></i> I've Paid — Confirm Donation
+            </button>
+            <div class="secure-note" style="margin-top:10px;"><i class="fa-solid fa-circle-info"></i> This is a demo QR — no real money moves.</div>
+        </div>
+    </div>
+</div>
+
+<script src="shared.js?v=3"></script>
+<script src="donate.js"></script>
+
+</body>
+</html>

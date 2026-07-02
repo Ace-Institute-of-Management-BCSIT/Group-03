@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Profile — CareConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="ngo.css">
+    <link rel="stylesheet" href="donate.css">
+    <style>
+        .profile-wrap { max-width: 900px; margin: 0 auto; padding: 60px 5% 80px; }
+        .profile-header { display:flex; gap:20px; align-items:center; margin-bottom: 2rem; flex-wrap:wrap; }
+        .profile-logo { width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:32px;flex-shrink:0; }
+        .profile-stats { display:flex; gap:1.5rem; margin: 1.5rem 0; flex-wrap:wrap; }
+        .profile-stat { background:var(--blue-bg); border-radius:16px; padding:18px 26px; text-align:center; border:1px solid var(--border); }
+        .profile-stat-val { font-size:1.4rem; font-weight:800; color:var(--blue); }
+        .profile-stat-lbl { font-size:12px; color:var(--muted); }
+        .manage-banner { background:#E8F5E9; border:1px solid #A5D6A7; border-radius:14px; padding:14px 18px; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+        .edit-fields { display:none; background:var(--blue-bg); border-radius:16px; padding:1.5rem; margin-bottom:2rem; border:1px solid var(--border); }
+        .edit-fields.show { display:block; }
+        .edit-fields .form-group { margin-bottom: 12px; }
+        .edit-fields textarea, .edit-fields input { width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:10px; font-family:'Inter',sans-serif; font-size:13px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="ngo.html" class="active">NGO</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons"></div>
+</header>
+
+<div class="profile-wrap">
+
+    <div id="profile-loading"><p style="color:var(--muted);">Loading NGO profile…</p></div>
+    <div id="profile-notfound" style="display:none;">
+        <p style="color:var(--muted);">We couldn't find this NGO profile. <a href="ngo.html">Back to NGO directory →</a></p>
+    </div>
+
+    <div id="profile-content" style="display:none;">
+
+        <div id="owner-manage-banner" class="manage-banner" style="display:none;">
+            <span><i class="fa-solid fa-pen"></i> You manage this organization.</span>
+            <div style="display:flex;gap:8px;">
+                <button class="btn-ngo-view btn-ngo-outline" onclick="toggleEdit()">Edit profile</button>
+                <button class="btn-ngo-view btn-ngo-primary" onclick="window.location.href='ngodashboard.html'">Go to dashboard →</button>
+            </div>
+        </div>
+
+        <div id="edit-fields" class="edit-fields">
+            <h4 style="margin-bottom:10px;">Update profile</h4>
+            <div class="form-group"><label>Contact person</label><input id="edit-contact" placeholder="Contact person"></div>
+            <div class="form-group"><label>Phone</label><input id="edit-phone" placeholder="Phone"></div>
+            <div class="form-group"><label>District</label><input id="edit-district" placeholder="District"></div>
+            <div class="form-group"><label>Description</label><textarea id="edit-desc" rows="3" placeholder="About your organization"></textarea></div>
+            <button class="btn-ngo-view btn-ngo-primary" onclick="saveProfileEdit()">Save changes</button>
+        </div>
+
+        <div class="profile-header">
+            <div class="profile-logo" id="profileLogo">N</div>
+            <div>
+                <h1 id="profileName" style="font-size:1.6rem;font-weight:800;"></h1>
+                <p id="profileMeta" style="color:var(--muted);font-size:14px;"></p>
+                <span class="ngo-verified">✓ Verified</span>
+            </div>
+        </div>
+
+        <p id="profileDesc" style="color:var(--text);line-height:1.7;margin-bottom:1rem;"></p>
+
+        <div class="profile-stats">
+            <div class="profile-stat"><div class="profile-stat-val" id="statRaised">—</div><div class="profile-stat-lbl">NPR raised</div></div>
+            <div class="profile-stat"><div class="profile-stat-val" id="statCampaigns">—</div><div class="profile-stat-lbl">Campaigns</div></div>
+            <div class="profile-stat"><div class="profile-stat-val" id="statVolunteers">—</div><div class="profile-stat-lbl">Volunteer applicants</div></div>
+        </div>
+
+        <h2 style="font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem;">Active campaigns</h2>
+        <div id="profileCauses"></div>
+    </div>
+</div>
+
+<div id="toastMsg"></div>
+
+<!-- SIGN IN MODAL -->
+<div id="signin-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left"><div class="modal-logo">CareConnect</div><h2>Every act of<br>giving matters</h2></div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Welcome back</h3><p>Sign in to your CareConnect account</p></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signin-email" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signin-password" required><button type="button" class="toggle-password" onclick="toggleSigninPassword()"><i class="fa-regular fa-eye" id="signin-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Sign in as</label><select id="signin-role" class="form-select"><option value="">Select your role</option><option value="donor">💚 Donor</option><option value="volunteer">🙋 Volunteer</option><option value="ngo">🌍 NGO / Organization</option><option value="admin">🏢 Admin</option></select></div>
+                    <button type="submit" class="btn-submit">Sign in →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+const ORG_COLORS = ['linear-gradient(135deg,#1565C0,#42A5F5)','linear-gradient(135deg,#C62828,#EF5350)','linear-gradient(135deg,#2E7D32,#66BB6A)','linear-gradient(135deg,#E65100,#FF9800)','linear-gradient(135deg,#6A1B9A,#AB47BC)'];
+function colorFor(name){ let h=0; for(let i=0;i<(name||'').length;i++) h=name.charCodeAt(i)+((h<<5)-h); return ORG_COLORS[Math.abs(h)%ORG_COLORS.length]; }
+
+let loadedNgo = null;
+
+async function loadProfile() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const name = params.get('name');
+
+    let url = 'api/ngo_profile.php?';
+    if (id) url += 'id=' + encodeURIComponent(id);
+    else if (name) url += 'name=' + encodeURIComponent(name);
+    else { showNotFound(); return; }
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        if (!data.success) { showNotFound(); return; }
+        renderProfile(data);
+    } catch (err) {
+        console.error(err);
+        showNotFound();
+    }
+}
+
+function showNotFound() {
+    document.getElementById('profile-loading').style.display = 'none';
+    document.getElementById('profile-notfound').style.display = 'block';
+}
+
+function renderProfile(data) {
+    loadedNgo = data.ngo;
+    document.getElementById('profile-loading').style.display = 'none';
+    document.getElementById('profile-content').style.display = 'block';
+
+    document.getElementById('profileLogo').style.background = colorFor(data.ngo.ngo_name);
+    document.getElementById('profileLogo').textContent = (data.ngo.ngo_name || 'N')[0].toUpperCase();
+    document.getElementById('profileName').textContent = data.ngo.ngo_name;
+    document.getElementById('profileMeta').textContent = `${data.ngo.focus_area || ''} · ${data.ngo.district || ''}`;
+    document.getElementById('profileDesc').textContent = data.ngo.description || 'No description provided yet.';
+
+    document.getElementById('statRaised').textContent = 'NPR ' + Math.round(data.stats.total_raised).toLocaleString();
+    document.getElementById('statCampaigns').textContent = data.stats.campaign_count;
+    document.getElementById('statVolunteers').textContent = data.stats.volunteer_applications;
+
+    const causesEl = document.getElementById('profileCauses');
+    if (!data.causes.length) {
+        causesEl.innerHTML = '<p style="color:var(--muted);font-size:13px;">No campaigns posted yet.</p>';
+    } else {
+        causesEl.innerHTML = data.causes.map(c => {
+            const pct = c.goal_amount > 0 ? Math.min(100, Math.round((c.raised_amount / c.goal_amount) * 100)) : 0;
+            return `
+            <div class="campaign-list-item">
+                <div class="campaign-list-top"><strong>${c.title}</strong><span class="ngo-verified">${c.status}</span></div>
+                <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+                <div class="progress-meta"><span>NPR ${Math.round(c.raised_amount).toLocaleString()} of ${Math.round(c.goal_amount).toLocaleString()}</span><span><a href="donate.html?cause=${c.id}">Donate →</a></span></div>
+            </div>`;
+        }).join('');
+    }
+
+    // Show "manage" banner if the signed-in user owns this NGO
+    const session = getSession();
+    if (session && session.role === 'ngo' && session.email === data.ngo.email) {
+        document.getElementById('owner-manage-banner').style.display = 'flex';
+        document.getElementById('edit-contact').value = data.ngo.contact_person || '';
+        document.getElementById('edit-phone').value = data.ngo.phone || '';
+        document.getElementById('edit-district').value = data.ngo.district || '';
+        document.getElementById('edit-desc').value = data.ngo.description || '';
+    }
+}
+
+function toggleEdit() {
+    document.getElementById('edit-fields').classList.toggle('show');
+}
+
+async function saveProfileEdit() {
+    const session = getSession();
+    if (!session) return;
+    showToast('⏳ Saving...');
+    try {
+        const res = await fetch('api/ngo_profile.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_id: session.id,
+                contact_person: document.getElementById('edit-contact').value,
+                phone: document.getElementById('edit-phone').value,
+                district: document.getElementById('edit-district').value,
+                description: document.getElementById('edit-desc').value
+            })
+        });
+        const data = await res.json();
+        showToast((data.success ? '✅ ' : '⚠️ ') + data.message);
+        if (data.success) loadProfile();
+    } catch (err) {
+        console.error(err);
+        showToast('⚠️ Server error');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer — CareConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="volunteer.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="volunteer.html" class="active">Volunteer</a></li>
+            <li><a href="ngo.html">NGO</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons"></div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <div class="page-hero-badge">🙋 Be a Changemaker</div>
+        <h1>Volunteer Your Time, Transform Lives</h1>
+        <p>Discover meaningful opportunities across Nepal. Register, apply, and track your volunteer hours — all in one place.</p>
+    </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="vol-stats">
+    <div class="vol-stats-grid">
+        <div><div class="vol-stat-value">2,400+</div><div class="vol-stat-label">Active Volunteers</div></div>
+        <div><div class="vol-stat-value">180+</div><div class="vol-stat-label">Opportunities Posted</div></div>
+        <div><div class="vol-stat-value">45,000+</div><div class="vol-stat-label">Hours Contributed</div></div>
+        <div><div class="vol-stat-value">15</div><div class="vol-stat-label">Districts Covered</div></div>
+    </div>
+</div>
+
+<!-- OPPORTUNITIES (no filter/search bar) -->
+<div class="opportunities">
+
+    <!-- Warning banner shown only when not signed in -->
+    <div id="vol-signin-warning" class="signin-warning" style="display:none;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div class="signin-warning-body">
+            <h4>Please sign in to apply for opportunities</h4>
+            <p>You can browse opportunities, but you need to <a onclick="openSignInModal()">sign in</a> or <a onclick="openSignUpModal()">create an account</a> to submit a volunteer application.</p>
+        </div>
+    </div>
+
+    <div class="opp-grid" id="oppGrid">
+
+        <div class="opp-card" data-cat="education">
+            <div class="opp-card-top">
+                <div class="opp-header">
+                    <div class="opp-org">
+                        <div class="org-logo">H</div>
+                        <div><div class="org-info-name">HopeNepal Foundation</div><div class="org-info-type">NGO · Verified</div></div>
+                    </div>
+                    <span class="opp-urgent">🔥 Urgent</span>
+                </div>
+                <div class="opp-title">School Teaching Support — Sindhupalchok</div>
+                <div class="opp-desc">Assist teachers in public schools with English and Math classes. Help children aged 7–14 improve their literacy and numeracy skills.</div>
+                <div class="opp-tags"><span class="opp-tag">Teaching</span><span class="opp-tag">Education</span><span class="opp-tag">Rural</span></div>
+                <div class="opp-meta">
+                    <div class="opp-meta-item"><i class="fa-solid fa-location-dot"></i> Sindhupalchok</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-calendar"></i> Jun 15 – Jul 30</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-clock"></i> 4 hrs/week</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-user-graduate"></i> No experience needed</div>
+                </div>
+            </div>
+            <div class="opp-card-bottom">
+                <div class="opp-spots"><strong>8</strong> spots left</div>
+                <button class="btn-apply" onclick="applyVolunteer('School Teaching Support')">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="opp-card" data-cat="health">
+            <div class="opp-card-top">
+                <div class="opp-header">
+                    <div class="opp-org">
+                        <div class="org-logo" style="background:linear-gradient(135deg,#C62828,#EF5350);">N</div>
+                        <div><div class="org-info-name">Nepal Health Initiative</div><div class="org-info-type">NGO · Verified</div></div>
+                    </div>
+                </div>
+                <div class="opp-title">Free Health Camp — Volunteer Medic</div>
+                <div class="opp-desc">Join our mobile health camp team providing basic health checkups, blood pressure, diabetes screening, and medicine distribution in remote villages.</div>
+                <div class="opp-tags"><span class="opp-tag">Medical</span><span class="opp-tag">Health</span><span class="opp-tag">Camp</span></div>
+                <div class="opp-meta">
+                    <div class="opp-meta-item"><i class="fa-solid fa-location-dot"></i> Kavre District</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-calendar"></i> Jun 20 – Jun 22</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-clock"></i> 3 days</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-user-doctor"></i> Medical background preferred</div>
+                </div>
+            </div>
+            <div class="opp-card-bottom">
+                <div class="opp-spots"><strong>15</strong> spots left</div>
+                <button class="btn-apply" onclick="applyVolunteer('Free Health Camp')">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="opp-card" data-cat="environment">
+            <div class="opp-card-top">
+                <div class="opp-header">
+                    <div class="opp-org">
+                        <div class="org-logo" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">G</div>
+                        <div><div class="org-info-name">Green Nepal</div><div class="org-info-type">NGO · Verified</div></div>
+                    </div>
+                </div>
+                <div class="opp-title">Community Tree Plantation Drive</div>
+                <div class="opp-desc">Plant 5,000 trees across urban Kathmandu parks and river banks. Help restore green cover and reduce urban heat island effects.</div>
+                <div class="opp-tags"><span class="opp-tag">Environment</span><span class="opp-tag">Outdoor</span><span class="opp-tag">One-day</span></div>
+                <div class="opp-meta">
+                    <div class="opp-meta-item"><i class="fa-solid fa-location-dot"></i> Kathmandu</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-calendar"></i> Jun 5, 2026</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-clock"></i> 1 day</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-leaf"></i> Open to all</div>
+                </div>
+            </div>
+            <div class="opp-card-bottom">
+                <div class="opp-spots"><strong>40</strong> spots left</div>
+                <button class="btn-apply" onclick="applyVolunteer('Tree Plantation Drive')">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="opp-card" data-cat="disaster">
+            <div class="opp-card-top">
+                <div class="opp-header">
+                    <div class="opp-org">
+                        <div class="org-logo" style="background:linear-gradient(135deg,#E65100,#FF9800);">R</div>
+                        <div><div class="org-info-name">Rebuild Nepal</div><div class="org-info-type">NGO · Verified</div></div>
+                    </div>
+                    <span class="opp-urgent">🔥 Urgent</span>
+                </div>
+                <div class="opp-title">Flood Relief — Distribution Team</div>
+                <div class="opp-desc">Help distribute emergency relief kits, food parcels, and blankets to flood-affected families in Terai regions. Physical fitness required.</div>
+                <div class="opp-tags"><span class="opp-tag">Disaster Relief</span><span class="opp-tag">Logistics</span><span class="opp-tag">Physical</span></div>
+                <div class="opp-meta">
+                    <div class="opp-meta-item"><i class="fa-solid fa-location-dot"></i> Rautahat</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-calendar"></i> Immediately</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-clock"></i> 5 days</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-shield-halved"></i> Age 18+</div>
+                </div>
+            </div>
+            <div class="opp-card-bottom">
+                <div class="opp-spots"><strong>20</strong> spots left</div>
+                <button class="btn-apply" onclick="applyVolunteer('Flood Relief')">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="opp-card" data-cat="community">
+            <div class="opp-card-top">
+                <div class="opp-header">
+                    <div class="opp-org">
+                        <div class="org-logo" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">W</div>
+                        <div><div class="org-info-name">WomenRise Nepal</div><div class="org-info-type">NGO · Verified</div></div>
+                    </div>
+                </div>
+                <div class="opp-title">Digital Literacy Workshop for Women</div>
+                <div class="opp-desc">Teach basic smartphone and computer skills to rural women. Help them access banking apps, government services, and online markets.</div>
+                <div class="opp-tags"><span class="opp-tag">Digital</span><span class="opp-tag">Women</span><span class="opp-tag">Tech</span></div>
+                <div class="opp-meta">
+                    <div class="opp-meta-item"><i class="fa-solid fa-location-dot"></i> Lalitpur</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-calendar"></i> Every Saturday</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-clock"></i> 3 hrs/week</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-laptop"></i> Tech skills needed</div>
+                </div>
+            </div>
+            <div class="opp-card-bottom">
+                <div class="opp-spots"><strong>6</strong> spots left</div>
+                <button class="btn-apply" onclick="applyVolunteer('Digital Literacy Workshop')">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="opp-card" data-cat="education">
+            <div class="opp-card-top">
+                <div class="opp-header">
+                    <div class="opp-org">
+                        <div class="org-logo" style="background:linear-gradient(135deg,#0277BD,#29B6F6);">Y</div>
+                        <div><div class="org-info-name">Youth4Change</div><div class="org-info-type">NGO · Verified</div></div>
+                    </div>
+                </div>
+                <div class="opp-title">Mentorship Program for Street Children</div>
+                <div class="opp-desc">Be a mentor to street children aged 8–16. Help them with school re-enrollment, counseling, and life skills development.</div>
+                <div class="opp-tags"><span class="opp-tag">Mentorship</span><span class="opp-tag">Youth</span><span class="opp-tag">Long-term</span></div>
+                <div class="opp-meta">
+                    <div class="opp-meta-item"><i class="fa-solid fa-location-dot"></i> Kathmandu</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-calendar"></i> Ongoing</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-clock"></i> 2 hrs/week</div>
+                    <div class="opp-meta-item"><i class="fa-solid fa-heart"></i> Empathy & patience</div>
+                </div>
+            </div>
+            <div class="opp-card-bottom">
+                <div class="opp-spots"><strong>12</strong> spots left</div>
+                <button class="btn-apply" onclick="applyVolunteer('Mentorship Program')">Apply Now</button>
+            </div>
+        </div>
+
+        <!-- NGO-posted opportunities load in here automatically -->
+        <div id="dynamicOppCards" style="display:contents;"></div>
+
+    </div>
+</div>
+
+<!-- REGISTER AS VOLUNTEER -->
+<section class="register-section">
+    <div class="register-layout">
+        <div class="register-info">
+            <h2>Become a Volunteer</h2>
+            <p>Create your volunteer profile once and apply to multiple opportunities. Track your hours, earn certificates, and build your social impact portfolio.</p>
+            <ul class="register-benefits">
+                <li><div class="benefit-icon"><i class="fa-solid fa-certificate"></i></div><div><strong>Verified certificates</strong> — Get a CareConnect volunteer certificate for completed programs.</div></li>
+                <li><div class="benefit-icon"><i class="fa-solid fa-clock"></i></div><div><strong>Hour tracking</strong> — Automatically log and track all volunteer hours in your dashboard.</div></li>
+                <li><div class="benefit-icon"><i class="fa-solid fa-bell"></i></div><div><strong>Smart matching</strong> — Get notified about opportunities that match your skills and availability.</div></li>
+                <li><div class="benefit-icon"><i class="fa-solid fa-users"></i></div><div><strong>Community</strong> — Connect with 2,400+ like-minded volunteers across Nepal.</div></li>
+            </ul>
+        </div>
+
+        <!-- Gate shown when not signed in -->
+        <div id="vol-form-gate" class="vol-gate" style="display:none;">
+            <i class="fa-solid fa-user-lock"></i>
+            <h4>Sign in to Register as a Volunteer</h4>
+            <p>You need to be signed in to create a volunteer profile and apply for opportunities. Sign in or create a free account to get started.</p>
+            <button class="btn-gate-signin" onclick="openSignInModal()">Sign in to Register →</button>
+        </div>
+
+        <!-- Actual form shown when signed in -->
+        <div id="vol-register-form-wrap" class="register-form" style="display:none;">
+            <h3>Quick Registration</h3>
+            <form onsubmit="handleVolunteerRegister(event)">
+                <div class="form-group"><label>Full name</label><input type="text" id="vol-name" placeholder="Your full name" required></div>
+                <div class="form-group"><label>Email address</label><input type="email" id="vol-email" placeholder="you@example.com" required></div>
+                <div class="form-group"><label>Phone number</label><input type="tel" id="vol-phone" placeholder="+977 98XXXXXXXX"></div>
+                <div class="form-group">
+                    <label>District</label>
+                    <select id="vol-district">
+                        <option value="">Select your district</option>
+                        <option>Kathmandu</option><option>Lalitpur</option><option>Bhaktapur</option>
+                        <option>Kavre</option><option>Sindhupalchok</option><option>Chitwan</option>
+                        <option>Pokhara</option><option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Availability</label>
+                    <select id="vol-avail">
+                        <option value="">Select availability</option>
+                        <option>Weekends only</option><option>Weekdays only</option>
+                        <option>Flexible</option><option>Full-time</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Skills (select all that apply)</label>
+                    <div class="skills-grid">
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">🎓 Teaching</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">🩺 Medical</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">💻 Tech / IT</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">📷 Photography</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">🚛 Logistics</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">🎨 Creative</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">📢 Outreach</button>
+                        <button type="button" class="skill-chip" onclick="toggleSkill(this)">🌱 Environment</button>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:14px;">
+                    <i class="fa-solid fa-user-plus"></i> Register as Volunteer
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <!-- Brand Column -->
+        <div class="footer-col">
+            <h2>CareConnect</h2>
+            <p class="footer-tagline">Beauty in giving, perfected through action.</p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">Volunteer</a></li>
+                <li><a href="#">NGO</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Us Column -->
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <ul class="footer-contact">
+                <li><i class="fa-regular fa-envelope"></i> Email: info@careconnect.com</li>
+                <li><i class="fa-solid fa-phone"></i> Phone: (01) 456-7890</li>
+                <li><i class="fa-solid fa-location-dot"></i> Location: Kathmandu, Nepal</li>
+            </ul>
+        </div>
+
+        <!-- Social Column (optional) -->
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="footer-bottom">
+        <p>© 2026 CareConnect. All rights reserved.</p>
+    </div>
+</footer>
+
+<div id="toastMsg"></div>
+
+<!-- APPLY TO OPPORTUNITY MODAL -->
+<div id="apply-modal" class="modal">
+    <div class="modal-container" style="max-width:480px;">
+        <button class="modal-close" onclick="closeApplyModal()">&times;</button>
+        <div class="modal-right" style="border-radius:24px;">
+            <div class="form-header">
+                <h3>Apply to volunteer</h3>
+                <p>For: <strong id="apply-modal-opp-name">—</strong></p>
+            </div>
+            <form onsubmit="submitVolunteerApplication(event)">
+                <div class="form-group">
+                    <label>Your availability *</label>
+                    <select id="apply-availability" class="form-select" required>
+                        <option value="">Select availability</option>
+                        <option>Weekends only</option>
+                        <option>Weekdays only</option>
+                        <option>Flexible</option>
+                        <option>Full-time</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top:14px;">
+                    <label>Message to the NGO (optional)</label>
+                    <textarea id="apply-message" rows="3" placeholder="Anything you'd like them to know?" style="width:100%;padding:10px 12px;border:1.5px solid #E2E8F0;border-radius:12px;font-family:'Inter',sans-serif;font-size:14px;resize:vertical;margin-top:6px;"></textarea>
+                </div>
+                <button type="submit" class="btn-submit" style="margin-top:18px;">Submit application →</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- SIGN IN MODAL -->
+<div id="signin-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left"><div class="modal-logo">CareConnect</div><h2>Every act of<br>giving matters</h2><p>Nepal's smart platform for donors, volunteers, and organizations.</p></div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Welcome back</h3><p>Sign in to your CareConnect account</p></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signin-email" placeholder="you@example.com" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signin-password" placeholder="••••••••" required><button type="button" class="toggle-password" onclick="toggleSigninPassword()"><i class="fa-regular fa-eye" id="signin-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Sign in as</label><select id="signin-role" class="form-select"><option value="">Select your role</option><option value="donor">💚 Donor</option><option value="volunteer">🙋 Volunteer</option><option value="ngo">🌍 NGO / Organization</option><option value="admin">🏢 Admin</option></select></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" checked> Remember me</label><a href="#" class="forgot-link">Forgot password?</a></div>
+                    <button type="submit" class="btn-submit">Sign in →</button>
+                    <p class="signup-prompt">Don't have an account? <a href="#" onclick="switchFromSignInToSignUp(event)">Create account →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SIGN UP MODAL -->
+<div id="signup-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignUpModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left"><div class="modal-logo">CareConnect</div><h2>Join the<br>CareConnect family</h2><p>Create your free account and start making a difference.</p></div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Create account</h3><p>Join CareConnect and start your journey</p></div>
+                <form onsubmit="handleSignUp(event)">
+                    <div class="form-group"><label>Full name</label><div class="input-icon"><i class="fa-regular fa-user"></i><input type="text" id="signup-name" placeholder="John Doe" required></div></div>
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signup-email" placeholder="you@example.com" required></div></div>
+                    <div class="form-group">
+    <label>Password</label>
+    <div class="input-icon password-field">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="signup-password" placeholder="Create a strong password" required oninput="checkPasswordStrength(this)">
+        <button type="button" class="toggle-password" onclick="toggleSignupPassword()">
+            <i class="fa-regular fa-eye" id="signup-toggle-icon"></i>
+        </button>
+    </div>
+    <small id="password-strength-hint" class="password-hint">Minimum 8 characters</small>
+</div>
+                    <div class="form-group"><label>Confirm password</label><div class="input-icon"><i class="fa-solid fa-lock"></i><input type="password" id="signup-confirm-password" placeholder="Confirm your password" required></div></div>
+                    <div class="form-group"><label>I want to join as</label><div class="role-selector"><div class="role-option" onclick="selectRole('donor')" id="role-donor"><span class="role-icon">💚</span><div class="role-info"><strong>Donor</strong><small>Give & track donations</small></div><span class="role-check">✓</span></div><div class="role-option" onclick="selectRole('volunteer')" id="role-volunteer"><span class="role-icon">🙋</span><div class="role-info"><strong>Volunteer</strong><small>Help & serve communities</small></div><span class="role-check">✓</span></div><div class="role-option" onclick="selectRole('ngo')" id="role-ngo"><span class="role-icon">🌍</span><div class="role-info"><strong>NGO / Organization</strong><small>Manage campaigns</small></div><span class="role-check">✓</span></div></div><input type="hidden" id="selected-role" value=""></div>
+                    <div class="form-group" id="org-name-group" style="display:none;"><label>Organization name</label><div class="input-icon"><i class="fa-regular fa-building"></i><input type="text" id="org-name" placeholder="Your organization name"></div></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" id="terms-checkbox" required> I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label></div>
+                    <button type="submit" class="btn-submit">Create my account →</button>
+                    <p class="signup-prompt">Already have an account? <a href="#" onclick="switchToSignIn()">Sign in →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="shared.js?v=3"></script>
+<script src="volunteer.js"></script>
+
+</body>
+</html>

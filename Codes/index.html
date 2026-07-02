@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareConnect — Connecting Donors, Volunteers &amp; NGOs in Nepal</title>
+    <meta name="description" content="CareConnect links donors, volunteers, and verified NGOs across Nepal so every contribution is tracked, transparent, and easy to make.">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="index.html" class="logo">CareConnect</a>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="ngo.html">NGO</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons"></div>
+</header>
+
+<!-- HERO SLIDER -->
+<section class="slider">
+    <div class="slide active"><img src="images/volunteer.avif" alt="Volunteers distributing relief supplies in a Nepali village"></div>
+    <div class="slide"><img src="images/banner.avif" alt="Children at a rural school in Nepal supported by donor funding"></div>
+    <div class="slide"><img src="images/donate.avif" alt="A clean water project in a mountain community"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <h1 class="hero-title">Every rupee, every hour, tracked from Kathmandu to the last mile</h1>
+        <p class="hero-subtitle">CareConnect connects donors, volunteers, and verified NGOs across Nepal — so you can see exactly where your support lands.</p>
+        <div class="cta-button">
+            <button class="btn-elegant" onclick="openSignUpModal()">Get started <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <div class="container">
+        <h2>What is CareConnect?</h2>
+        <p>CareConnect is a platform built for Nepal's giving community. We verify every NGO before they can list a cause, log every donation against a real campaign goal, and give volunteers a direct line to organizations that need their skills — replacing scattered messages and paper receipts with one transparent record.</p>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="section-header">
+        <h2>Built for transparency</h2>
+        <p class="section-sub">Four things that set CareConnect apart from a typical donation page.</p>
+    </div>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Verified NGOs only</h3>
+            <p>Every organization is reviewed and approved before they can publish a cause or accept volunteers.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Live progress tracking</h3>
+            <p>Each cause shows funds raised against its goal in real time, so you always know what your gift achieved.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h3>Cash or item donations</h3>
+            <p>Give money directly, or arrange a meetup to hand over goods like clothes, books, or food.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-people-arrows"></i>
+            <h3>Volunteer matching</h3>
+            <p>Browse open opportunities by district and skill, and apply directly to the NGO running them.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ROLES -->
+<section class="roles">
+    <div class="section-header">
+        <h2>Join as the role that fits you</h2>
+        <p class="section-sub">One account, one sign-up flow — pick how you want to get involved.</p>
+    </div>
+    <div class="roles-grid">
+        <div class="role-card" onclick="openSignUpModal(); selectRole('donor')">
+            <div class="role-emoji">💚</div>
+            <h4>Donor</h4>
+            <p>Give to causes you trust and watch the impact unfold.</p>
+        </div>
+        <div class="role-card" onclick="openSignUpModal(); selectRole('volunteer')">
+            <div class="role-emoji">🙋</div>
+            <h4>Volunteer</h4>
+            <p>Offer your time and skills to NGOs running real projects.</p>
+        </div>
+        <div class="role-card" onclick="openSignUpModal(); selectRole('ngo')">
+            <div class="role-emoji">🌍</div>
+            <h4>NGO / Organization</h4>
+            <p>List your campaigns and manage volunteers in one place.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT + STATS -->
+<section class="about-stats">
+    <div class="about-stats-container">
+        <div class="about-left">
+            <h2>Giving you can actually see</h2>
+            <p>No black box, no guessing where the money went. CareConnect logs every transaction against the cause it funded, and every NGO profile is verified before it goes live.</p>
+            <div class="about-buttons">
+                <button class="about-btn-primary" onclick="window.location.href='donate.html'">Start donating</button>
+                <button class="about-btn-outline" onclick="openSignUpModal(); selectRole('volunteer')">Become a volunteer</button>
+            </div>
+        </div>
+        <div class="stats-right">
+            <div class="stat-item">
+                <div class="stat-value">NPR 42L+</div>
+                <div class="stat-label">Total donations tracked</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1,240</div>
+                <div class="stat-label">Active donors</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">38</div>
+                <div class="stat-label">Campaigns funded</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Districts reached</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h2>CareConnect</h2>
+            <p class="footer-tagline">Beauty in giving, perfected through action.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="ngo.html">NGO</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <ul class="footer-contact">
+                <li><i class="fa-regular fa-envelope"></i> Email: info@careconnect.com</li>
+                <li><i class="fa-solid fa-phone"></i> Phone: (01) 456-7890</li>
+                <li><i class="fa-solid fa-location-dot"></i> Location: Kathmandu, Nepal</li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 CareConnect. All rights reserved.</p>
+    </div>
+</footer>
+
+<div id="toastMsg"></div>
+
+<!-- SIGN IN MODAL -->
+<div id="signin-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignInModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left">
+                <div class="modal-logo">CareConnect</div>
+                <h2>Every act of<br>giving matters</h2>
+                <p>Join CareConnect — Nepal's smart platform connecting donors, volunteers, and organizations for maximum social impact.</p>
+                <div class="modal-quote">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"CareConnect transformed how we manage our volunteers."</p>
+                    <div class="quote-author"><strong>Sunita Rana</strong><span>Director, HopeNepal Foundation</span></div>
+                </div>
+            </div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Welcome back</h3><p>Sign in to your CareConnect account</p></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signin-email" placeholder="you@gmail.com" required></div></div>
+                    <div class="form-group"><label>Password</label><div class="input-icon password-field"><i class="fa-solid fa-lock"></i><input type="password" id="signin-password" placeholder="••••••••" required><button type="button" class="toggle-password" onclick="toggleSigninPassword()"><i class="fa-regular fa-eye" id="signin-toggle-icon"></i></button></div></div>
+                    <div class="form-group"><label>Sign in as</label><select id="signin-role" class="form-select"><option value="">Select your role</option><option value="donor">💚 Donor</option><option value="volunteer">🙋 Volunteer</option><option value="ngo">🌍 NGO / Organization</option><option value="admin">🏢 Admin</option></select></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" checked> Remember me</label><a href="#" class="forgot-link">Forgot password?</a></div>
+                    <button type="submit" class="btn-submit">Sign in to CareConnect →</button>
+                    <p class="signup-prompt">Don't have an account? <a href="#" onclick="switchFromSignInToSignUp(event)">Create account →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SIGN UP MODAL -->
+<div id="signup-modal" class="modal">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeSignUpModal()">&times;</button>
+        <div class="modal-layout">
+            <div class="modal-left">
+                <div class="modal-logo">CareConnect</div>
+                <h2>Join the<br>CareConnect family</h2>
+                <p>Create your free account and start making a difference today.</p>
+            </div>
+            <div class="modal-right">
+                <div class="form-header"><h3>Create account</h3><p>Join CareConnect and start your journey</p></div>
+                <form onsubmit="handleSignUp(event)">
+                    <div class="form-group"><label>Full name</label><div class="input-icon"><i class="fa-regular fa-user"></i><input type="text" id="signup-name" placeholder="John Doe" required></div></div>
+                    <div class="form-group"><label>Email address</label><div class="input-icon"><i class="fa-regular fa-envelope"></i><input type="email" id="signup-email" placeholder="you@gmail.com" required></div></div>
+                   <div class="form-group">
+    <label>Password</label>
+    <div class="input-icon password-field">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="signup-password" placeholder="Create a strong password" required oninput="checkPasswordStrength(this)">
+        <button type="button" class="toggle-password" onclick="toggleSignupPassword()">
+            <i class="fa-regular fa-eye" id="signup-toggle-icon"></i>
+        </button>
+    </div>
+    <small id="password-strength-hint" class="password-hint">Minimum 8 characters</small>
+</div>
+                    <div class="form-group"><label>Confirm password</label><div class="input-icon"><i class="fa-solid fa-lock"></i><input type="password" id="signup-confirm-password" placeholder="Confirm your password" required></div></div>
+                    <div class="form-group">
+                        <label>I want to join as</label>
+                        <div class="role-selector">
+                            <div class="role-option" onclick="selectRole('donor')" id="role-donor"><span class="role-icon">💚</span><div class="role-info"><strong>Donor</strong><small>Give & track donations</small></div><span class="role-check">✓</span></div>
+                            <div class="role-option" onclick="selectRole('volunteer')" id="role-volunteer"><span class="role-icon">🙋</span><div class="role-info"><strong>Volunteer</strong><small>Help & serve communities</small></div><span class="role-check">✓</span></div>
+                            <div class="role-option" onclick="selectRole('ngo')" id="role-ngo"><span class="role-icon">🌍</span><div class="role-info"><strong>NGO / Organization</strong><small>Manage campaigns & volunteers</small></div><span class="role-check">✓</span></div>
+                        </div>
+                        <input type="hidden" id="selected-role" value="">
+                    </div>
+                    <div class="form-group" id="org-name-group" style="display:none;"><label>Organization name</label><div class="input-icon"><i class="fa-regular fa-building"></i><input type="text" id="org-name" placeholder="Your organization name"></div></div>
+                    <div class="form-options"><label class="checkbox"><input type="checkbox" id="terms-checkbox" required> I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label></div>
+                    <button type="submit" class="btn-submit">Create my account →</button>
+                    <p class="signup-prompt">Already have an account? <a href="#" onclick="switchToSignIn()">Sign in →</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="shared.js?v=3"></script>
+<script>
+    // Hero slider auto-rotate
+    (function () {
+        const slides = document.querySelectorAll('.slider .slide');
+        let current = 0;
+        if (slides.length > 1) {
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 5000);
+        }
+    })();
+</script>
+
+</body>
+</html>
